@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+
+html {
+    font-family: 'Roboto', sans-serif;
+    
+}
+body{
+    margin: 0;
+    padding: 0;
+    border: 2px solid #333;
+    border-radius: 2rem;
+    margin: 0 auto 1rem;
+    /* max-width: 600px;
+    font-size: 3rem;
+    line-height: 7rem; */
+}
+.logo{
+    text-align: center;
+    padding:  1em;
+    background-color: #2B3D41;
+    color: antiquewhite;
+    border-radius: 2rem 2rem 0 0;
+    
+}
+#animal-names-bar{
+    padding: 30px;
+    font-size: 20px;
+    text-align: center;
+    height: 600px;
+
+}
+input[type="submit"] {
+    background-color: rgb(85, 85, 91);
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#votes-input{
+    font-size: 3vh;
+    
+}
+#reset{
+    background-color: rgb(85, 85, 91);
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
