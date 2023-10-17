@@ -4,6 +4,7 @@ html {
     font-family: 'Roboto', sans-serif;
     
 }
+
 body{
     margin: 0;
     padding: 0;
@@ -39,6 +40,10 @@ input[type="submit"] {
 #votes-input{
     font-size: 3vh;
     
+}
+
+h4{
+    color: #83A0A0;
 }
 #reset{
     background-color: rgb(85, 85, 91);
