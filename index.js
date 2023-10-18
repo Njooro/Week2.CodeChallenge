@@ -1,52 +1,13 @@
 
 
-// document.addEventListener("DOMContentLoaded", (e) => {
-//     const nav = document.getElementById("animal-names-bar");
-//     function getAnimalDetails(){
-//         return fetch("http://localhost:3000/characters")
-//         .then((res) => res.json())
-//         .then((characters) => {
-//             characters.forEach((character) => {
-//                 const characterView = document.createElement("span");
-//                 nav.appendChild(characterView);
-//                 characterView.id = character.id;
-//                 characterView.innerText = character.name;
-//                 characterView.style.cursor = "pointer";
 
-//                 characterView.addEventListener("click", (e) => {
-//                     const characterName = document.getElementById("name");
-//                     characterName.innerText = character.name;
-//                     const characterImage = getElementById("image");
-//                     characterImage.src =characterImage;
-                    
-//                     const currentVotes = document.getElementById("vites");
-//                     currentVotes.innerText = character.votes;
-//                     const form = document.getElementById(votes-form);
-//                     form.addEventListener("submit", (e) => {e.preventDefault();
-//                     const votes = document.getElementById("votes").value;
-//                 if (isNaN(votes)=== false){
-//                     currentVotes.innerText = votes;
-//                 } else {alert("Enter Votes");
-//                 form.requestFullscreen();
-//                 }
-//             console.log(votes);
-//         })
-        
-//         const resetButton = document.getElementById("reset");
-//         resetButton.addEventListener("click", (e) =>{
-//             e.preventDefault();
-//             currentVotes.innerText = 0;
-//         })
-//        })
-//      })
 
-     
 
-//      })
-//     }
-// })
+getAnimalDetails();
 
-// getAnimalDetails();
+
+
+const animalBar = document.querySelector("#animal-names-bar");
 
 
 function getAnimalDetails(){
@@ -56,34 +17,59 @@ function getAnimalDetails(){
             "Content-type": "application/json"
         }
     }).then ((res) => res.json())
-    .then((response) => {
-        showAnimalDetails(response)        
-    })
+    .then( response => {
+        chartacters = [...response]
+        showAnimals(response)
+})
 }
 
-function 
 
+function showAnimals(characters){
+    for (character of characters){
+        const span = document.createElement("span");
+        span.innerText = character.name;
+        span.style.cursor = "pointer"
+        
+        span.setAttribute("id", character.id)
+    
+        span.addEventListener("click", (event)=> {
+            showAnimalImage(showAnimalsId(characters, parseInt(event.target.id)))
+        });
 
+        animalBar.appendChild(span);
+    }
+    function showAnimalImage(characters){
+        const image = document.querySelector("#image");
+        image.src = character.image
+        return character.image;
+    }
+    
+    function showAnimalsId(characters, id){
+        return characters.find((character) => {
+            return character.id === id;
+            return character.id
+        })
+    }
+    
+}
 
+const form = document.getElementById("votes");
+            form.addEventListener("submit", (e) => {
+              e.preventDefault();
+              const votes = document.getElementById("votes").value;
+              if (isNaN(votes) === false) {
+                currentVotes.innerText = votes;
+                // form.reset();
+              } else {
+                alert("Votes can only be in numbers");
+                form.reset();
+              }
+              console.log(votes);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              // resets vote count to zero
+              const resetButton = document.getElementById("reset-btn");
+              resetButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                currentVotes.innerText = 0;
+              });
+            });      
