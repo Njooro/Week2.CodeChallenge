@@ -1,75 +1,48 @@
 
 
 
-
-
-getAnimalDetails();
-
-
-
-const animalBar = document.querySelector("#animal-names-bar");
-
-
-function getAnimalDetails(){
+function getAnimalDetails() {
     fetch("http://localhost:3000/characters", {
         method: "GET",
         headers: {
-            "Content-type": "application/json"
+            "Content-Type": "application/json"
         }
-    }).then ((res) => res.json())
-    .then( response => {
-        chartacters = [...response]
-        showAnimals(response)
-})
-}
-
-
-function showAnimals(characters){
-    for (character of characters){
-        const span = document.createElement("span");
-        span.innerText = character.name;
-        span.style.cursor = "pointer"
-        
-        span.setAttribute("id", character.id)
-    
-        span.addEventListener("click", (event)=> {
-            showAnimalImage(showAnimalsId(characters, parseInt(event.target.id)))
+    })
+        .then(res => res.json())
+        .then(response => {
+            showAnimals(response);
+        })
+        .catch(error => {
+            console.error('Error fetching animal details:', error);
         });
 
-        animalBar.appendChild(span);
+    function showAnimals(characters) {
+        const animalBar = document.querySelector("#animal-names-bar");
+        animalBar.innerHTML = "";
+        for (character of characters) {
+            
+            const span = document.createElement("span");
+            span.innerText = character.name;
+            span.style.cursor = "pointer";
+            span.addEventListener("click", () => showAnimalDetails(character));
+            animalBar.appendChild(span);
+        };
     }
-    function showAnimalImage(characters){
-        const image = document.querySelector("#image");
-        image.src = character.image
-        return character.image;
-    }
+
+    function showAnimalDetails(character) {
+        const characterName = document.getElementById("animal-names-bar");
+        characterName.innerText = character.name;
+        
+        const img = document.createElement("img"); // Change div to img
+        img.src = character.image; // Set the image source
+        
+        const animalBar = document.querySelector("#animal-names-bar");
+        animalBar.appendChild(img);
     
-    function showAnimalsId(characters, id){
-        return characters.find((character) => {
-            return character.id === id;
-            return character.id
-        })
+        const currentVotes = document.getElementById("vote-count");
+        currentVotes.innerText = character.votes;
     }
-    
 }
 
-const form = document.getElementById("votes");
-            form.addEventListener("submit", (e) => {
-              e.preventDefault();
-              const votes = document.getElementById("votes").value;
-              if (isNaN(votes) === false) {
-                currentVotes.innerText = votes;
-                // form.reset();
-              } else {
-                alert("Votes can only be in numbers");
-                form.reset();
-              }
-              console.log(votes);
-
-              // resets vote count to zero
-              const resetButton = document.getElementById("reset-btn");
-              resetButton.addEventListener("click", (e) => {
-                e.preventDefault();
-                currentVotes.innerText = 0;
-              });
-            });      
+// Call the function to fetch and display animal details
+getAnimalDetails();
