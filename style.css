@@ -11,9 +11,11 @@ body{
     border: 2px solid #333;
     border-radius: 2rem;
     margin: 0 auto 1rem;
-    /* max-width: 600px;
+    width: 100%;
+    background-color: aqua;
+    
     font-size: 3rem;
-    line-height: 7rem; */
+    line-height: 7rem;
 }
 .logo{
     text-align: center;
