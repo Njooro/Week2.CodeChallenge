@@ -1,3 +1,4 @@
+//function to fetch the details from json file
 function getAnimalDetails() {
     fetch("http://localhost:3000/characters", {
         method: "GET",
@@ -12,7 +13,7 @@ function getAnimalDetails() {
         .catch(error => {
             console.error('Error fetching animal details:', error);
         });
-
+//function to display the characters
     function showAnimals(characters) {
         const animalBar = document.querySelector("#animal-names-bar");
         animalBar.innerHTML = "";
@@ -24,7 +25,7 @@ function getAnimalDetails() {
             animalBar.appendChild(span);
         }
     }
-
+//function to show animal details
     function showAnimalDetails(character) {
         const characterName = document.querySelector("#animal-names-bar");
         characterName.innerText = character.name;
@@ -43,12 +44,13 @@ function getAnimalDetails() {
         const votesForm = document.getElementById("votes-form");
         const votesInput = document.getElementById("votes-input");
         const addVotesButton = document.getElementById("add-votes");
+        //the reset button resets the votes once clicked
         const resetButton = document.getElementById("reset");
-
+        //the event listener function listens to the click and resets the votes to 0
         resetButton.addEventListener("click", () => {
             currentVotes.innerText = "0";
         });
-
+//function to add votes
         votesForm.addEventListener("submit", (event) => {
             event.preventDefault();
             const votes = parseInt(votesInput.value);
@@ -59,7 +61,7 @@ function getAnimalDetails() {
     }
 }
 
-// Call the function to fetch and display animal details
+// this function shows the animals, their details, and has an option to add the votes
 getAnimalDetails();
 
 
