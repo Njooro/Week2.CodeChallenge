@@ -1,7 +1,6 @@
-
 // function to fetch the details from a JSON file
 function getAnimalDetails() {
-    fetch("http://localhost:3000/characters", {
+    fetch("https://my-json-server.typicode.com/Njooro/Week2.CodeChallenge/characters", {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -68,4 +67,3 @@ function showAnimalDetails(character) {
 
 // this function shows the animals, their details, and has an option to add the votes
 getAnimalDetails();
-
